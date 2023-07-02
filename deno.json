@@ -1,0 +1,22 @@
+{
+  "tasks": {
+    "build:npm": "deno run -A tasks/build-npm.ts"
+  },
+  "fmt": {
+    "exclude": ["build"]
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["prefer-const"]
+    },
+    "exclude": ["build"]
+  },
+  "imports": {
+    "hastx/": "./",
+    "hastx/jsx-runtime": "./jsx-runtime.ts"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "hastx"
+  }
+}
