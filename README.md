@@ -38,7 +38,6 @@ Add the following to your `deno.json`:
 
 ```json
 {
-  //...
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "hastx"
@@ -56,7 +55,6 @@ Install the "hastx" package from npm, and configure your jsxImportSource
 ```json
 {
   "compilerOptions": {
-    //...
     "jsx": "react-jsx",
     "jsxImportSource": "hastx"
   }
