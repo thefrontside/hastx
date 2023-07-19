@@ -1,4 +1,7 @@
 import type * as hast from "./deps.ts";
+import type * as html from "./html.ts";
+
+export type Element = hast.Element;
 
 export type JSXChild = string | number | boolean | JSXElement;
 
@@ -19,8 +22,12 @@ declare global {
   namespace JSX {
     type Element = JSXElement;
     type ElementType = JSXElement;
-    interface IntrinsicElements {
-      [name: string]: unknown;
+
+    //deno-lint-ignore no-empty-interface
+    interface IntrinsicElements extends html.HTMLElements {}
+    interface ElementChildrenAttribute {
+      //deno-lint-ignore ban-types
+      children: {};
     }
   }
 }
@@ -47,7 +54,7 @@ export function jsx(
       children: read(children),
     };
   } else {
-    return type({ ...props, key });
+    return type({ ...props, ...(key ? { key } : {}) });
   }
 }
 
