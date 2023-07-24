@@ -1,1 +1,1 @@
-export type * from "https://esm.sh/@types/hast-format@2.3.0";
+export type * from "https://esm.sh/v127/@types/hast@2.3.4/index.d.ts";

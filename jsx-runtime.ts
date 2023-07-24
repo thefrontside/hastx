@@ -18,10 +18,15 @@ export interface JSXComponent {
   (props: JSXComponentProps): JSXElement;
 }
 
+export interface JSXElementConstructor {
+  //deno-lint-ignore no-explicit-any
+  (...args: any[]): JSXElement;
+}
+
 declare global {
   namespace JSX {
     type Element = JSXElement;
-    type ElementType = JSXElement;
+    type ElementType = keyof html.HTMLElements | JSXElementConstructor;
 
     //deno-lint-ignore no-empty-interface
     interface IntrinsicElements extends html.HTMLElements {}
