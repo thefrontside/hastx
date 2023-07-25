@@ -1488,7 +1488,7 @@ export interface HTMLButton extends HTMLElement {
    * overrides the target attribute of the button's form owner. The
    * following keywords have special meanings:
    */
-  formtarget: "_self" | "_blank" | "_parent" | "_top" | string;
+  formtarget?: "_self" | "_blank" | "_parent" | "_top" | string;
 
   /**
    * The name of the button, submitted as a pair with the button's
