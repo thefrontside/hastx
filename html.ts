@@ -2575,7 +2575,7 @@ export interface HTMLElements {
    * attribute, while a text representation of the source can be given
    * using the <cite> element.
    */
-  blockquotee: HTMLBlockquote;
+  blockquote: HTMLBlockquote;
 
   /**
    * Provides the description, definition, or value for the preceding
