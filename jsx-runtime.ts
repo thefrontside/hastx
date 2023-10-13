@@ -1,5 +1,6 @@
 import type * as hast from "./deps.ts";
 import type * as html from "./html.ts";
+import type * as svg from "./svg.ts";
 
 export type Element = hast.Element;
 
@@ -26,10 +27,12 @@ export interface JSXElementConstructor {
 declare global {
   namespace JSX {
     type Element = JSXElement;
-    type ElementType = keyof html.HTMLElements | JSXElementConstructor;
+    type ElementType =
+      | keyof html.HTMLElements
+      | keyof svg.SVGElements
+      | JSXElementConstructor;
 
-    //deno-lint-ignore no-empty-interface
-    interface IntrinsicElements extends html.HTMLElements {}
+    interface IntrinsicElements extends html.HTMLElements, svg.SVGElements {}
     interface ElementChildrenAttribute {
       //deno-lint-ignore ban-types
       children: {};
