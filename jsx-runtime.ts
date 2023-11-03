@@ -6,10 +6,12 @@ export type Element = hast.Element;
 
 export type JSXChild = string | number | boolean | JSXElement;
 
+export type JSXChildren = JSXChild | JSXChild[];
+
 export type JSXElement = hast.Element | hast.Root | hast.Text;
 
 export type JSXElementProps = Record<string, string> & {
-  children?: JSXChild | JSXChild[];
+  children?: JSXChildren;
 };
 export type JSXComponentProps = Record<string, unknown> & {
   key?: string;
@@ -25,7 +27,7 @@ export interface JSXElementConstructor {
 }
 
 declare global {
-  namespace JSX {
+  export namespace JSX {
     type Element = JSXElement;
     type ElementType =
       | keyof html.HTMLElements
