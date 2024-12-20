@@ -1,4 +1,4 @@
-import type * as hast from "./deps.ts";
+import type * as hast from "@types/hastx";
 import type * as html from "./html.ts";
 import type * as svg from "./svg.ts";
 

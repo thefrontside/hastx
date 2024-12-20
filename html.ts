@@ -1,6 +1,4 @@
-//deno-lint-ignore-file no-empty-interface
-
-import type * as hast from "./deps.ts";
+import type * as hast from "@types/hastx";
 
 export type HTMLChild =
   | string
