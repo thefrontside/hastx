@@ -10,27 +10,27 @@ permissions:
 
 jobs:
 
-  publish-jsr:
-    runs-on: ubuntu-latest
+  # publish-jsr:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: checkout
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: checkout
+  #       uses: actions/checkout@v4
 
-      - name: setup deno
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
+  #     - name: setup deno
+  #       uses: denoland/setup-deno@v2
+  #       with:
+  #         deno-version: v2.x
 
-      - name: Get Version
-        id: vars
-        run: echo ::set-output name=version::$(echo ${{github.ref_name}} | sed 's/^v//')
+  #     - name: Get Version
+  #       id: vars
+  #       run: echo ::set-output name=version::$(echo ${{github.ref_name}} | sed 's/^v//')
 
-      - name: Build JSR
-        run: deno task build:jsr ${{steps.vars.outputs.version}}
+  #     - name: Build JSR
+  #       run: deno task build:jsr ${{steps.vars.outputs.version}}
 
-      - name: Publish JSR
-        run: npx jsr publish --allow-dirty
+  #     - name: Publish JSR
+  #       run: npx jsr publish --allow-dirty
 
   publish-npm:
     runs-on: ubuntu-latest
