@@ -31,7 +31,6 @@ jobs:
 
   #     - name: Publish JSR
   #       run: npx jsr publish --allow-dirty
-
   publish-npm:
     runs-on: ubuntu-latest
 

@@ -61,7 +61,7 @@ await build({
   mappings: {
     "npm:@types/hast@^3.0.0": {
       name: "@types/hast",
-      version: "^3.0.0"
+      version: "^3.0.0",
     },
   },
 });
