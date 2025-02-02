@@ -1,6 +1,6 @@
-import { describe, it } from "https://deno.land/std@0.188.0/testing/bdd.ts";
-import { expect } from "https://deno.land/x/expect@v0.3.0/mod.ts";
-import { h } from "https://esm.sh/hastscript@7.2.0";
+import { describe, it } from "jsr:@std/testing@^1/bdd";
+import { expect } from "jsr:@std/expect@^1";
+import { h } from "npm:hastscript@9.0.0";
 
 describe("JSX runtime", () => {
   it("generates simple tags", () => {

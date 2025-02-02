@@ -28,6 +28,10 @@
       "build"
     ]
   },
+  "imports": {
+    "hastx/": "./",
+    "hastx/jsx-runtime": "./jsx-runtime.ts"
+  },
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "hastx"
