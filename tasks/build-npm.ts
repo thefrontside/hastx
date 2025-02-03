@@ -1,4 +1,4 @@
-import { build, emptyDir } from "https://deno.land/x/dnt@0.37.0/mod.ts";
+import { build, emptyDir } from "jsr:@deno/dnt@0.41.3";
 
 const outDir = "./build/npm";
 
@@ -10,10 +10,24 @@ if (!version) {
 }
 
 await build({
-  entryPoints: [{
-    name: "./jsx-runtime",
-    path: "./jsx-runtime.ts",
-  }],
+  entryPoints: [
+    {
+      "name": ".",
+      "path": "./mod.ts",
+    },
+    {
+      name: "./jsx-runtime",
+      path: "./jsx-runtime.ts",
+    },
+    {
+      name: "./html",
+      path: "./html.ts",
+    },
+    {
+      name: "./svg",
+      path: "./svg.ts",
+    },
+  ],
   outDir,
   shims: {
     deno: false,
@@ -21,7 +35,7 @@ await build({
   test: false,
   typeCheck: false,
   compilerOptions: {
-    lib: ["esnext"],
+    lib: ["ESNext"],
     target: "ES2020",
     sourceMap: true,
   },
@@ -31,8 +45,8 @@ await build({
     version,
     description: "JSX Transform emitting Rehype syntax trees (HAST)",
     license: "ISC",
+    author: "engineering@frontside.com",
     repository: {
-      author: "engineering@frontside.com",
       type: "git",
       url: "git+https://github.com/thefrontside/hastx.git",
     },
@@ -43,6 +57,12 @@ await build({
       node: ">= 16",
     },
     sideEffects: false,
+  },
+  mappings: {
+    "npm:@types/hast@^3.0.0": {
+      name: "@types/hast",
+      version: "^3.0.0",
+    },
   },
 });
 

@@ -43,7 +43,7 @@ Add the following to your `deno.json`:
     "jsxImportSource": "hastx"
   },
   "imports": {
-    "hastx/jsx-runtime": "https://deno.land/x/hastx/jsx-runtime.ts"
+    "hastx/jsx-runtime": "npm:hastx@latest"
   }
 }
 ```

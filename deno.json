@@ -1,15 +1,32 @@
 {
+  "name": "@frontside/hastx",
+  "version": "0.3.0",
+  "exports": {
+    ".": "./mod.ts",
+    "./jsx-runtime": "./jsx-runtime.ts",
+    "./html": "./html.ts",
+    "./svg": "./svg.ts"
+  },
+  "license": "ISC",
   "tasks": {
-    "build:npm": "deno run -A tasks/build-npm.ts"
+    "build:npm": "deno run -A tasks/build-npm.ts",
+    "build:jsr": "deno run -A tasks/build-jsr.ts"
   },
   "fmt": {
-    "exclude": ["build"]
+    "exclude": [
+      "build"
+    ]
   },
   "lint": {
     "rules": {
-      "exclude": ["prefer-const"]
+      "exclude": [
+        "prefer-const",
+        "no-slow-types"
+      ]
     },
-    "exclude": ["build"]
+    "exclude": [
+      "build"
+    ]
   },
   "imports": {
     "hastx/": "./",
@@ -18,5 +35,8 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "hastx"
+  },
+  "publish": {
+    "exclude": ["test", "tasks"]
   }
 }
