@@ -20,6 +20,10 @@ await build({
       path: "./jsx-runtime.ts",
     },
     {
+      name: "./jsx-dev-runtime",
+      path: "./jsx-dev-runtime.ts",
+    },
+    {
       name: "./html",
       path: "./html.ts",
     },
