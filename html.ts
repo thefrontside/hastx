@@ -20,9 +20,78 @@ export interface HTMLElement extends HTMLAttributes {
 
 export interface HTMLAttributes {
   accesskey?: string;
-  autocapitalize?: "off" | "none" | "on" | "setences" | "words" | "characters";
+  "aria-activedescendant"?: string;
+  "aria-atomic"?: "true" | "false";
+  "aria-autocomplete"?: "inline" | "list" | "both";
+  "aria-braillelabel"?: string;
+  "aria-brailleroledescription"?: string;
+  "aria-busy"?: "true" | "false";
+  "aria-checked"?: "true" | "false" | "mixed";
+  "aria-colcount"?: number;
+  "aria-colindex"?: number;
+  "aria-colindextext"?: string;
+  "aria-colspan"?: number;
+  "aria-controls"?: string;
+  "aria-current"?:
+    | "page"
+    | "step"
+    | "location"
+    | "date"
+    | "time"
+    | "true"
+    | "false";
+  "aria-describedby"?: string;
+  "aria-description"?: string;
+  "aria-details"?: string;
+  "aria-disabled"?: "true" | "false";
+  "aria-dropeffect"?: string;
+  "aria-errormessage"?: string;
+  "aria-expanded"?: "true" | "false";
+  "aria-flowto"?: string;
+  "aria-grabbed"?: "true" | "false";
+  "aria-haspopup"?:
+    | "false"
+    | "true"
+    | "menu"
+    | "listbox"
+    | "tree"
+    | "grid"
+    | "dialog";
+  "aria-hidden"?: "true" | "false";
+  "aria-invalid"?: "grammar" | "false" | "spelling" | "true";
+  "aria-keyshortcuts"?: string;
+  "aria-label"?: string;
+  "aria-labelledby"?: string;
+  "aria-level"?: number;
+  "aria-live"?: "assertive" | "off" | "polite";
+  "aria-modal"?: "true" | "false";
+  "aria-multiline"?: "true" | "false";
+  "aria-multiselectable"?: "true" | "false";
+  "aria-orientation"?: "horizontal" | "undefined" | "vertical";
+  "aria-owns"?: string;
+  "aria-placeholder"?: string;
+  "aria-posinset"?: number;
+  "aria-pressed"?: "true" | "false" | "mixed";
+  "aria-readonly"?: "true" | "false";
+  "aria-relevant"?: string;
+  "aria-required"?: "true" | "false";
+  "aria-roledescription"?: string;
+  "aria-rowcount"?: number;
+  "aria-rowindex"?: number;
+  "aria-rowindextext"?: string;
+  "aria-rowspan"?: number;
+  "aria-selected"?: "true" | "false";
+  "aria-setsize"?: number;
+  "aria-sort"?: "ascending" | "descending" | "none" | "other";
+  "aria-valuemax"?: number;
+  "aria-valuemin"?: number;
+  "aria-valuenow"?: number;
+  "aria-valuetext"?: string;
+  autocapitalize?: "off" | "none" | "on" | "sentences" | "words" | "characters";
+  autocorrect?: "on" | "off" | "" | boolean;
+  autofocus?: boolean;
   class?: string;
-  contenteditable?: "true" | "false" | "plaintext-only";
+  contenteditable?: "true" | "false" | "plaintext-only" | "" | boolean;
   dir?: "ltr" | "rtl" | "auto";
   draggable?: "true" | "false";
   enterkeyhint?:
@@ -33,7 +102,9 @@ export interface HTMLAttributes {
     | "previous"
     | "search"
     | "send";
-  hidden?: "hidden" | "until-found";
+  headingoffset?: number;
+  headingreset?: boolean;
+  hidden?: "hidden" | "until-found" | "" | boolean;
   id?: string;
   inert?: boolean;
   inputmode?:
@@ -49,15 +120,90 @@ export interface HTMLAttributes {
   itemid?: string;
   itemprop?: string;
   itemref?: string;
-  itemscope?: string;
+  itemscope?: boolean;
   itemtype?: string;
   lang?: string;
   nonce?: string;
-  spellcheck?: "true" | "false" | "default";
+  onauxclick?: string;
+  onbeforeinput?: string;
+  onbeforematch?: string;
+  onbeforetoggle?: string;
+  onblur?: string;
+  oncancel?: string;
+  oncanplay?: string;
+  oncanplaythrough?: string;
+  onchange?: string;
+  onclick?: string;
+  onclose?: string;
+  oncommand?: string;
+  oncontextlost?: string;
+  oncontextmenu?: string;
+  oncontextrestored?: string;
+  oncopy?: string;
+  oncuechange?: string;
+  oncut?: string;
+  ondblclick?: string;
+  ondrag?: string;
+  ondragend?: string;
+  ondragenter?: string;
+  ondragleave?: string;
+  ondragover?: string;
+  ondragstart?: string;
+  ondrop?: string;
+  ondurationchange?: string;
+  onemptied?: string;
+  onended?: string;
+  onerror?: string;
+  onfocus?: string;
+  onformdata?: string;
+  oninput?: string;
+  oninvalid?: string;
+  onkeydown?: string;
+  onkeypress?: string;
+  onkeyup?: string;
+  onload?: string;
+  onloadeddata?: string;
+  onloadedmetadata?: string;
+  onloadstart?: string;
+  onmousedown?: string;
+  onmouseenter?: string;
+  onmouseleave?: string;
+  onmousemove?: string;
+  onmouseout?: string;
+  onmouseover?: string;
+  onmouseup?: string;
+  onpaste?: string;
+  onpause?: string;
+  onplay?: string;
+  onplaying?: string;
+  onprogress?: string;
+  onratechange?: string;
+  onreset?: string;
+  onresize?: string;
+  onscroll?: string;
+  onscrollend?: string;
+  onsecuritypolicyviolation?: string;
+  onseeked?: string;
+  onseeking?: string;
+  onselect?: string;
+  onslotchange?: string;
+  onstalled?: string;
+  onsubmit?: string;
+  onsuspend?: string;
+  ontimeupdate?: string;
+  ontoggle?: string;
+  onvolumechange?: string;
+  onwaiting?: string;
+  onwheel?: string;
+  popover?: "auto" | "manual" | "hint" | "" | boolean;
+  role?: string;
+  slot?: string;
+  spellcheck?: "true" | "false" | "" | boolean;
   style?: string;
   tabindex?: number;
   title?: string;
-  translate?: "yes" | "no";
+  translate?: "yes" | "no" | "" | boolean;
+  writingsuggestions?: "true" | "false" | "" | boolean;
 }
 
 export interface HTMLHTML extends HTMLElement {
@@ -181,24 +327,52 @@ export interface HTMLLink extends HTMLVoidElement {
    */
   as?:
     | "audio"
+    | "audioworklet"
     | "document"
     | "embed"
     | "fetch"
     | "font"
+    | "frame"
+    | "iframe"
     | "image"
+    | "json"
+    | "manifest"
     | "object"
+    | "paintworklet"
+    | "report"
     | "script"
+    | "serviceworker"
+    | "sharedworker"
     | "style"
     | "track"
     | "video"
-    | "worker";
+    | "webidentity"
+    | "worker"
+    | "xslt";
+
+  /**
+   * For the mask-icon link type, defines suggested color that user
+   * agents can use to customize the display of the icon that the user
+   * sees when they pin your site.
+   */
+  color?: string;
 
   /**
    * This enumerated attribute indicates whether CORS must be used when fetching
    * the resource. CORS-enabled images can be reused in the <canvas> element
    * without being tainted.
    */
-  crossorigin?: "anonymous" | "use-credentials";
+  crossorigin?: "anonymous" | "use-credentials" | "" | boolean;
+
+  /**
+   * For rel="stylesheet" only, the disabled Boolean attribute
+   * indicates whether the described stylesheet should be loaded and
+   * applied to the document. If disabled is specified in the HTML
+   * when it is loaded, the stylesheet will not be loaded during page
+   * load. Instead, the stylesheet will be loaded on-demand, if and
+   * when the disabled attribute is changed to false or removed.
+   */
+  disabled?: boolean;
 
   /**
    * Provides a hint of the relative priority to use when fetching a preloaded
@@ -313,7 +487,7 @@ export interface HTMLLink extends HTMLVoidElement {
    * operations that are to be blocked must be a space-separated list
    * of blocking attributes listed below.
    */
-  blocking?: string;
+  blocking?: "render";
 }
 
 export interface HTMLMeta extends HTMLVoidElement {
@@ -344,6 +518,16 @@ export interface HTMLMeta extends HTMLVoidElement {
     | "default-style"
     | "x-ua-compatible"
     | "refresh";
+
+  /**
+   * The media attribute defines which media the theme color defined
+   * in the content attribute should be applied to. Its value is a
+   * media query, which defaults to all if the attribute is
+   * missing. This attribute is only relevant when the element's name
+   * attribute is set to theme-color. Otherwise, it has no effect, and
+   * should not be included.
+   */
+  media?: string;
 
   /**
    * The name and content attributes can be used together to provide
@@ -396,7 +580,26 @@ export interface HTMLStyle extends HTMLElement {
 
 export interface HTMLTitle extends HTMLElement {}
 
-export interface HTMLBody extends HTMLElement {}
+export interface HTMLBody extends HTMLElement {
+  onafterprint?: string;
+  onbeforeprint?: string;
+  onbeforeunload?: string;
+  onhashchange?: string;
+  onlanguagechange?: string;
+  onmessage?: string;
+  onmessageerror?: string;
+  onoffline?: string;
+  ononline?: string;
+  onpagehide?: string;
+  onpagereveal?: string;
+  onpageshow?: string;
+  onpageswap?: string;
+  onpopstate?: string;
+  onrejectionhandled?: string;
+  onstorage?: string;
+  onunhandledrejection?: string;
+  onunload?: string;
+}
 
 export interface HTMLBlockquote extends HTMLElement {
   /**
@@ -456,7 +659,7 @@ export interface HTMLAnchor extends HTMLElement {
    * Causes the browser to treat the linked URL as a download. Can be
    * used with or without a filename value:
    */
-  download?: string;
+  download?: string | boolean;
 
   /**
    * The URL that the hyperlink points to. Links are not restricted to
@@ -483,6 +686,7 @@ export interface HTMLAnchor extends HTMLElement {
    * How much of the referrer to send when following the link.
    */
   referrerpolicy?:
+    | ""
     | "no-referrer"
     | "no-referrer-when-downgrade"
     | "origin"
@@ -563,7 +767,7 @@ export interface HTMLAudio extends HTMLElement {
    * the related audio file. CORS-enabled resources can be reused in
    * the <canvas> element without being tainted.
    */
-  crossorigin?: "anonymous" | "use-credentials";
+  crossorigin?: "anonymous" | "use-credentials" | "" | boolean;
 
   /**
    * A Boolean attribute used to disable the capability of remote
@@ -592,7 +796,7 @@ export interface HTMLAudio extends HTMLElement {
    * browser about what the author thinks will lead to the best user
    * experience. It may have one of the following values:
    */
-  preload?: "none" | "metadata" | "auto";
+  preload?: "none" | "metadata" | "auto" | "" | boolean;
 
   /**
    * The URL of the audio to embed. This is subject to HTTP access
@@ -628,7 +832,7 @@ export interface HTMLImage extends HTMLVoidElement {
    * browser blocks the image from loading, and logs a CORS error to the
    * devtools console.
    */
-  crossorigin?: "anonymous" | "use-credentials";
+  crossorigin?: "anonymous" | "use-credentials" | "" | boolean;
 
   /**
    * Provides an image decoding hint to the browser. Allowed values:
@@ -709,7 +913,7 @@ export interface HTMLImage extends HTMLVoidElement {
    * density descriptor is already defined in srcset, or unless srcset
    * contains w descriptors.
    */
-  src: string;
+  src?: string;
 
   /**
    * One or more strings separated by commas, indicating possible
@@ -752,7 +956,7 @@ export interface HTMLImage extends HTMLVoidElement {
    * The partial URL (starting with #) of an image map associated with
    * the element.
    */
-  usemap?: boolean;
+  usemap?: string;
 }
 
 export interface HTMLMap extends HTMLElement {
@@ -834,7 +1038,7 @@ export interface HTMLVideo extends HTMLElement {
    * the related video. CORS-enabled resources can be reused in the
    * <canvas> element without being tainted.
    */
-  crossorigin?: "anonymous" | "use-credentials";
+  crossorigin?: "anonymous" | "use-credentials" | "" | boolean;
 
   /**
    * Prevents the browser from suggesting a Picture-in-Picture context
@@ -855,7 +1059,7 @@ export interface HTMLVideo extends HTMLElement {
    * The height of the video's display area, in CSS pixels (absolute
    * values only; no percentages).
    */
-  height: number;
+  height?: number;
 
   /**
    * A Boolean attribute; if specified, the browser will automatically
@@ -906,7 +1110,7 @@ export interface HTMLVideo extends HTMLElement {
    * The width of the video's display area, in CSS pixels (absolute
    * values only; no percentages).
    */
-  width: number;
+  width?: number;
 }
 
 export interface HTMLEmbed extends HTMLVoidElement {
@@ -919,12 +1123,12 @@ export interface HTMLEmbed extends HTMLVoidElement {
   /**
    * The URL of the resource being embedded.
    */
-  src: string;
+  src?: string;
 
   /**
    * The MIME type to use to select the plug-in to instantiate.
    */
-  type: string;
+  type?: string;
 
   /**
    * The displayed width of the resource, in CSS pixels. This must be
@@ -1208,7 +1412,7 @@ export interface HTMLScript extends HTMLElement {
    * attributes for a more descriptive explanation of its valid
    * arguments.
    */
-  crossorigin?: string;
+  crossorigin?: "anonymous" | "use-credentials" | "" | boolean;
 
   /**
    * This Boolean attribute is set to indicate to a browser that the
@@ -1412,6 +1616,29 @@ export interface HTMLButton extends HTMLElement {
   autocomplete?: "off";
 
   /**
+   * Specifies the action to be performed on an element being
+   * controlled by a control <button> specified via the commandfor
+   * attribute.
+   */
+  command?:
+    | "toggle-popover"
+    | "show-popover"
+    | "hide-popover"
+    | "close"
+    | "request-close"
+    | "show-modal"
+    | `--${string}`;
+
+  /**
+   * Turns a <button> element into a command button, controlling a
+   * given interactive element by issuing the command specified in the
+   * button's command attribute. The commandfor attribute takes the ID
+   * of the element to control as its value. This is a more general
+   * version of popovertarget.
+   */
+  commandfor?: string;
+
+  /**
    * This Boolean attribute prevents the user from interacting with the button: it cannot be pressed or focused.
    *
    * Firefox, unlike other browsers, persists the dynamic disabled
@@ -1464,7 +1691,7 @@ export interface HTMLButton extends HTMLElement {
    * <form> and doesn't have type="button"), this attribute specifies
    * the HTTP method used to submit the form. Possible values:
    */
-  formmethod?: "post" | "POST" | "get" | "GET";
+  formmethod?: "get" | "post" | "dialog";
 
   /**
    * If the button is a submit button, this Boolean attribute
@@ -1511,7 +1738,7 @@ export interface HTMLButton extends HTMLElement {
   /**
    * The default behavior of the button.
    */
-  type?: "submit" | "reset" | "action";
+  type?: "submit" | "reset" | "button";
 
   /**
    * Defines the value associated with the button's name when it's
@@ -1559,14 +1786,13 @@ export interface HTMLForm extends HTMLElement {
    * versions of HTML, character encodings could also be delimited by
    * commas.)
    */
-  "accept-charset"?: string;
+  "accept-charset"?: "utf-8" | "UTF-8";
 
   /**
    * Indicates whether input elements can by default have their values
    * automatically completed by the browser. autocomplete attributes
    * on form elements override it on <form>.
    */
-
   autocomplete?: "off" | "on";
 
   /**
@@ -1642,6 +1868,13 @@ export interface HTMLInput extends HTMLVoidElement {
   accept?: string;
 
   /**
+   * Valid for the color input type only, the alpha attribute provides
+   * the end user with the ability to set the opacity of the color
+   * being selected.
+   */
+  alpha?: boolean;
+
+  /**
    * Valid for the image button only, the alt attribute provides
    * alternative text for the image, displaying the value of the
    * attribute if the image src is missing or otherwise fails to
@@ -1673,14 +1906,6 @@ export interface HTMLInput extends HTMLVoidElement {
   autocomplete?: string;
 
   /**
-   * A Boolean attribute which, if present, indicates that the input
-   * should automatically have focus when the page has finished
-   * loading (or when the <dialog> containing the element has been
-   * displayed).
-   */
-  autofocus?: boolean;
-
-  /**
    * Introduced in the HTML Media Capture specification and valid for
    * the file input type only, the capture attribute defines which
    * media—microphone, video, or camera—should be used to capture a
@@ -1701,6 +1926,12 @@ export interface HTMLInput extends HTMLVoidElement {
    * HTMLInputElement's checked IDL attribute is updated.)
    */
   checked?: boolean;
+
+  /**
+   * Valid for the color input type only, the colorspace attribute
+   * specifies the color space that is used by the type="color" input.
+   */
+  colorspace?: "limited-srgb" | "display-p3";
 
   /**
    * Valid for text and search input types only, the dirname attribute
@@ -1975,7 +2206,7 @@ export interface HTMLInput extends HTMLVoidElement {
    * range, the step attribute is a number that specifies the
    * granularity that the value must adhere to.
    */
-  step?: number;
+  step?: number | "any";
 
   /**
    * Global attribute valid for all elements, including all input
@@ -2120,7 +2351,7 @@ export interface HTMLOptionGroup extends HTMLElement {
    * labeling the options in the user interface. This attribute is
    * mandatory if this element is used.
    */
-  label?: boolean;
+  label?: string;
 }
 
 export interface HTMLOption extends HTMLElement {
@@ -2211,7 +2442,7 @@ export interface HTMLSelect extends HTMLElement {
    * feature. See The HTML autocomplete attribute for a complete list
    * of values and details on how to use autocomplete.
    */
-  autocomplete?: "on" | "off";
+  autocomplete?: string;
 
   /**
    * This Boolean attribute lets you specify that a form control
@@ -2276,7 +2507,7 @@ export interface HTMLTextArea extends HTMLElement {
    * This attribute indicates whether the value of the control can be
    * automatically completed by the browser.
    */
-  autocomplete?: "on" | "off";
+  autocomplete?: string;
 
   /**
    * This Boolean attribute lets you specify that a form control
@@ -2292,6 +2523,12 @@ export interface HTMLTextArea extends HTMLElement {
    * is not specified, the default value is 20.
    */
   cols?: number;
+
+  /**
+   * This attribute is used to indicate the text directionality of the
+   * element contents.
+   */
+  dirname?: string;
 
   /**
    * This Boolean attribute indicates that the user cannot interact
@@ -2361,12 +2598,6 @@ export interface HTMLTextArea extends HTMLElement {
   rows?: number;
 
   /**
-   * Specifies whether the <textarea> is subject to spell checking by
-   * the underlying browser/OS. The value can be:
-   */
-  spellcheck?: "true" | "false" | "default";
-
-  /**
    * Indicates how the control should wrap the value for form
    * submission
    */
@@ -2374,6 +2605,14 @@ export interface HTMLTextArea extends HTMLElement {
 }
 
 export interface HTMLDetails extends HTMLElement {
+  /**
+   * This attribute enables multiple <details> elements to be
+   * connected, with only one open at a time. This allows developers
+   * to easily create UI features such as accordions without
+   * scripting.
+   */
+  name?: string;
+
   /**
    * This Boolean attribute indicates whether the details — that is,
    * the contents of the <details> element — are currently
@@ -2386,6 +2625,12 @@ export interface HTMLDetails extends HTMLElement {
 
 export interface HTMLDialog extends HTMLElement {
   /**
+   * Specifies the types of user actions that can be used to close the
+   * <dialog> element.
+   */
+  closedby?: "any" | "closerequest" | "none";
+
+  /**
    * Indicates that the dialog is active and can be interacted
    * with. When the open attribute is not set, the dialog shouldn't be
    * shown to the user. It is recommended to use the .show() or
@@ -2394,6 +2639,63 @@ export interface HTMLDialog extends HTMLElement {
    * will be non-modal.
    */
   open?: boolean;
+}
+
+export interface HTMLTemplate extends HTMLElement {
+  /**
+   * Sets the value of the clonable property of a ShadowRoot created
+   * using this element to true. If set, a clone of the shadow host
+   * (the parent element of this <template>) created with
+   * Node.cloneNode() or Document.importNode() will include a shadow
+   * root in the copy.
+   */
+  shadowrootclonable?: boolean;
+
+  /**
+   * Enables declarative shadow roots to indicate they will use a
+   * custom element registry.
+   */
+  shadowrootcustomelementregistry?: boolean;
+
+  /**
+   * Sets the value of the delegatesFocus property of a ShadowRoot
+   * created using this element to true. If this is set and a
+   * non-focusable element in the shadow tree is selected, then focus
+   * is delegated to the first focusable element in the tree. The
+   * value defaults to false.
+   */
+  shadowrootdelegatesfocus?: boolean;
+
+  /**
+   * Creates a shadow root for the parent element. It is a declarative
+   * version of the Element.attachShadow() method and accepts the same
+   * enumerated values.
+   */
+  shadowrootmode?: "open" | "closed";
+
+  /**
+   * Sets the value of the serializable property of a ShadowRoot
+   * created using this element to true. If set, the shadow root may
+   * be serialized by calling the Element.getHTML() or
+   * ShadowRoot.getHTML() methods with the
+   * options.serializableShadowRoots parameter set true. The value
+   * defaults to false.
+   */
+  shadowrootserializable?: boolean;
+}
+
+export interface HTMLSlot extends HTMLElement {
+  /**
+   * The slot's name. When the slot's containing component gets
+   * rendered, the slot is rendered with the custom element's child
+   * that has a matching slot attribute. A named slot is a <slot>
+   * element with a name attribute. Unnamed slots have the name
+   * default to the empty string. Names should be unique per shadow
+   * root: if you have two slots with the same name, all of the
+   * elements with a matching slot attribute will be assigned to the
+   * first slot with that name.
+   */
+  name?: string;
 }
 
 export interface HTMLElements {
@@ -2565,6 +2867,12 @@ export interface HTMLElements {
    * exceptions.
    */
   section: HTMLElement;
+
+  /**
+   * Represents a part that contains a set of form controls or other
+   * content related to performing a search or filtering operation.
+   */
+  search: HTMLElement;
 
   /**
    * Indicates that the enclosed text is an extended
@@ -2773,7 +3081,7 @@ export interface HTMLElements {
    * a <kbd> element using its default monospace font, although this
    * is not mandated by the HTML standard.
    */
-  kdb: HTMLElement;
+  kbd: HTMLElement;
 
   /**
    * Represents text which is marked or highlighted for reference or
@@ -3162,11 +3470,17 @@ export interface HTMLElements {
   select: HTMLSelect;
 
   /**
+   * Displays the content of the currently selected <option> inside a
+   * closed <select> element.
+   */
+  selectedcontent: HTMLElement;
+
+  /**
    * Represents a multi-line plain-text editing control, useful when
    * you want to allow users to enter a sizeable amount of free-form
    * text, for example a comment on a review or feedback form.
    */
-  texarea: HTMLTextArea;
+  textarea: HTMLTextArea;
 
   /**
    * Creates a disclosure widget in which information is visible only
@@ -3187,4 +3501,19 @@ export interface HTMLElements {
    * of the parent <details> element open and closed.
    */
   summary: HTMLElement;
+
+  /**
+   * Part of the Web Components technology suite, this element is a
+   * placeholder inside a web component that you can fill with your
+   * own markup, which lets you create separate DOM trees and present
+   * them together.
+   */
+  slot: HTMLSlot;
+
+  /**
+   * A mechanism for holding HTML that is not to be rendered
+   * immediately when a page is loaded but may be instantiated
+   * subsequently during runtime using JavaScript.
+   */
+  template: HTMLTemplate;
 }
