@@ -1,4 +1,4 @@
-import type * as hast from "npm:@types/hast@^3.0.0";
+import type * as hast from "hast";
 
 export type HTMLChild =
   | string

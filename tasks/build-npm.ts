@@ -57,11 +57,8 @@ await build({
       node: ">= 16",
     },
     sideEffects: false,
-  },
-  mappings: {
-    "npm:@types/hast@^3.0.0": {
-      name: "@types/hast",
-      version: "^3.0.0",
+    dependencies: {
+      "@types/hast": "^3.0.0",
     },
   },
 });
