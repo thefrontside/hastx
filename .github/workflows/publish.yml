@@ -48,9 +48,9 @@ jobs:
         run: echo ::set-output name=version::$(echo ${{github.ref_name}} | sed 's/^v//')
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 18.x
+          node-version: 24
 
       - name: Build
         run: deno task build:npm ${{steps.vars.outputs.version}}
@@ -58,5 +58,3 @@ jobs:
       - name: Publish
         run: npm publish --access=public
         working-directory: ./build/npm
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
