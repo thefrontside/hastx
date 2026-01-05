@@ -29,6 +29,7 @@
     ]
   },
   "imports": {
+    "hast": "npm:@types/hast@^3.0.0",
     "hastx/": "./",
     "hastx/jsx-runtime": "./jsx-runtime.ts"
   },
