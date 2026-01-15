@@ -1,6 +1,7 @@
 import { describe, it } from "jsr:@std/testing@^1/bdd";
 import { expect } from "jsr:@std/expect@^1";
 import { h } from "npm:hastscript@9.0.0";
+import type { JSXChild } from "../jsx-runtime.ts";
 
 describe("JSX runtime", () => {
   it("generates simple tags", () => {
@@ -113,5 +114,11 @@ describe("JSX runtime", () => {
     let el = <div class="button" />;
     //@ts-expect-error yo.
     expect(el.properties.className).toEqual("button");
+  });
+
+  it("strips <!DOCTYPE> from element children", () => {
+    const root: JSXChild = { type: "root", children: [{ type: "doctype" }] };
+    expect(<>{root}</>).toEqual(root);
+    expect(<div>{root}</div>).toEqual(h("div"));
   });
 });

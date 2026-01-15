@@ -61,7 +61,7 @@ export function jsx(
       type: "element",
       tagName,
       properties: { ...properties, ...className },
-      children: read(children),
+      children: read(children).filter((child) => child.type !== "doctype"),
     };
   } else {
     return type({ ...props, ...(key ? { key } : {}) });
@@ -81,7 +81,7 @@ export function Fragment(
   };
 }
 
-function read(children?: JSXChild | JSXChild[]): (hast.Element | hast.Text)[] {
+function read(children?: JSXChild | JSXChild[]): hast.RootContent[] {
   let nodes = Array.isArray(children) ? children : (children ? [children] : []);
   return nodes.flatMap((child) => {
     switch (typeof child) {
@@ -94,7 +94,7 @@ function read(children?: JSXChild | JSXChild[]): (hast.Element | hast.Text)[] {
         }];
       default:
         if (child.type === "root") {
-          return child.children as Array<hast.Element | hast.Text>;
+          return child.children;
         } else {
           return [child];
         }
