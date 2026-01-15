@@ -24,12 +24,12 @@ export type JSXComponentProps = Record<string, unknown> & {
 };
 
 export interface JSXComponent {
-  (props: JSXComponentProps): JSXElement;
+  (props: JSXComponentProps): JSXChildren;
 }
 
 export interface JSXElementConstructor {
   //deno-lint-ignore no-explicit-any
-  (...args: any[]): JSXElement;
+  (...args: any[]): JSXChildren;
 }
 
 declare global {
@@ -70,7 +70,10 @@ export function jsx(
       children: read(children).filter((child) => child.type !== "doctype"),
     };
   } else {
-    return type({ ...props, ...(key ? { key } : {}) });
+    return {
+      type: "root",
+      children: read(type({ ...props, ...(key ? { key } : {}) })),
+    };
   }
 }
 
