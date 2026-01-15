@@ -8,7 +8,7 @@ export type HTMLChild =
   | hast.Root
   | hast.Text;
 
-export type HTMLChildren = HTMLChild | Iterable<HTMLChild>;
+export type HTMLChildren = HTMLChild | Iterable<HTMLChildren>;
 
 export interface HTMLVoidElement extends HTMLElement {
   children?: never;

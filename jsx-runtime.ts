@@ -6,7 +6,7 @@ export type Element = hast.Element;
 
 export type JSXChild = string | number | boolean | JSXElement;
 
-export type JSXChildren = JSXChild | JSXChild[];
+export type JSXChildren = JSXChild | JSXChildren[];
 
 export type JSXElement = hast.Element | hast.Root | hast.Text;
 
@@ -71,9 +71,7 @@ export function jsx(
 export const jsxs = jsx;
 export const jsxDEV = jsx;
 
-export function Fragment(
-  props: { children?: JSXChild | JSXChild[] },
-): hast.Root {
+export function Fragment(props: { children?: JSXChildren }): hast.Root {
   let { children = [] } = props;
   return {
     type: "root",
@@ -81,23 +79,24 @@ export function Fragment(
   };
 }
 
-function read(children?: JSXChild | JSXChild[]): hast.RootContent[] {
-  let nodes = Array.isArray(children) ? children : (children ? [children] : []);
-  return nodes.flatMap((child) => {
-    switch (typeof child) {
-      case "number":
-      case "boolean":
-      case "string":
-        return [{
-          type: "text",
-          value: String(child),
-        }];
-      default:
-        if (child.type === "root") {
-          return child.children;
-        } else {
-          return [child];
-        }
-    }
-  });
+function read(children?: JSXChildren): hast.RootContent[] {
+  switch (typeof children) {
+    case "undefined":
+      return [];
+    case "number":
+    case "boolean":
+    case "string":
+      return [{
+        type: "text",
+        value: String(children),
+      }];
+    default:
+      if (Array.isArray(children)) {
+        return children.flatMap(read);
+      } else if (children.type === "root") {
+        return children.children;
+      } else {
+        return [children];
+      }
+  }
 }

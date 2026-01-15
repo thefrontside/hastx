@@ -90,6 +90,12 @@ describe("JSX runtime", () => {
     expect(<ul>{...[1, 2, 3].map((i) => <li>{i}</li>)}</ul>).toEqual(
       h("ul", h("li", "1"), h("li", "2"), h("li", "3")),
     );
+    expect(
+      <ul>
+        <li>0</li>
+        {...[1, 2, 3].map((i) => <li>{i}</li>)}
+      </ul>,
+    ).toEqual(h("ul", h("li", "0"), h("li", "1"), h("li", "2"), h("li", "3")));
   });
 
   it("passes the key attribute", () => {
