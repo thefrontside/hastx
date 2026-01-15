@@ -1,3 +1,8 @@
+## 0.1.1
+
+- improve compatibility with other JSX runtimes
+  (https://github.com/thefrontside/hastx/pull/11)
+
 ## 0.1.0
 
 - (fix): Fix error TS6137 with NPM package and "module": "nodenext"
