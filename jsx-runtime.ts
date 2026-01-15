@@ -4,9 +4,15 @@ import type * as svg from "./svg.ts";
 
 export type Element = hast.Element;
 
-export type JSXChild = string | number | boolean | JSXElement;
+export type JSXChild =
+  | string
+  | number
+  | boolean
+  | undefined
+  | null
+  | JSXElement;
 
-export type JSXChildren = JSXChild | JSXChild[];
+export type JSXChildren = JSXChild | JSXChildren[];
 
 export type JSXElement = hast.Element | hast.Root | hast.Text;
 
@@ -18,12 +24,12 @@ export type JSXComponentProps = Record<string, unknown> & {
 };
 
 export interface JSXComponent {
-  (props: JSXComponentProps): JSXElement;
+  (props: JSXComponentProps): JSXChildren;
 }
 
 export interface JSXElementConstructor {
   //deno-lint-ignore no-explicit-any
-  (...args: any[]): JSXElement;
+  (...args: any[]): JSXChildren;
 }
 
 declare global {
@@ -61,19 +67,20 @@ export function jsx(
       type: "element",
       tagName,
       properties: { ...properties, ...className },
-      children: read(children),
+      children: read(children).filter((child) => child.type !== "doctype"),
     };
   } else {
-    return type({ ...props, ...(key ? { key } : {}) });
+    return {
+      type: "root",
+      children: read(type({ ...props, ...(key ? { key } : {}) })),
+    };
   }
 }
 
 export const jsxs = jsx;
 export const jsxDEV = jsx;
 
-export function Fragment(
-  props: { children?: JSXChild | JSXChild[] },
-): hast.Root {
+export function Fragment(props: { children?: JSXChildren }): hast.Root {
   let { children = [] } = props;
   return {
     type: "root",
@@ -81,23 +88,26 @@ export function Fragment(
   };
 }
 
-function read(children?: JSXChild | JSXChild[]): (hast.Element | hast.Text)[] {
-  let nodes = Array.isArray(children) ? children : (children ? [children] : []);
-  return nodes.flatMap((child) => {
-    switch (typeof child) {
-      case "number":
-      case "boolean":
-      case "string":
-        return [{
-          type: "text",
-          value: String(child),
-        }];
-      default:
-        if (child.type === "root") {
-          return child.children as Array<hast.Element | hast.Text>;
-        } else {
-          return [child];
-        }
-    }
-  });
+function read(children?: JSXChildren): hast.RootContent[] {
+  switch (typeof children) {
+    case "undefined":
+    case "boolean":
+      return [];
+    case "number":
+    case "string":
+      return [{
+        type: "text",
+        value: String(children),
+      }];
+    default:
+      if (children === null) {
+        return [];
+      } else if (Array.isArray(children)) {
+        return children.flatMap(read);
+      } else if (children.type === "root") {
+        return children.children;
+      } else {
+        return [children];
+      }
+  }
 }

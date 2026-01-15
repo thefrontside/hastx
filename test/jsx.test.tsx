@@ -1,6 +1,7 @@
 import { describe, it } from "jsr:@std/testing@^1/bdd";
 import { expect } from "jsr:@std/expect@^1";
 import { h } from "npm:hastscript@9.0.0";
+import type { JSXChild, JSXChildren } from "../jsx-runtime.ts";
 
 describe("JSX runtime", () => {
   it("generates simple tags", () => {
@@ -60,9 +61,24 @@ describe("JSX runtime", () => {
     );
   });
 
-  it("can embed boolean expressions inside", () => {
+  it("ignores boolean expressions inside", () => {
     expect(<title>{false} witness</title>).toEqual(
-      h("title", "false", " witness"),
+      h("title", " witness"),
+    );
+    expect(<title>{true} love</title>).toEqual(
+      h("title", " love"),
+    );
+  });
+
+  it("ignores undefined", () => {
+    expect(<title>{undefined} behavior</title>).toEqual(
+      h("title", " behavior"),
+    );
+  });
+
+  it("ignores null", () => {
+    expect(<title>{null} hypothesis</title>).toEqual(
+      h("title", " hypothesis"),
     );
   });
 
@@ -89,6 +105,12 @@ describe("JSX runtime", () => {
     expect(<ul>{...[1, 2, 3].map((i) => <li>{i}</li>)}</ul>).toEqual(
       h("ul", h("li", "1"), h("li", "2"), h("li", "3")),
     );
+    expect(
+      <ul>
+        <li>0</li>
+        {...[1, 2, 3].map((i) => <li>{i}</li>)}
+      </ul>,
+    ).toEqual(h("ul", h("li", "0"), h("li", "1"), h("li", "2"), h("li", "3")));
   });
 
   it("passes the key attribute", () => {
@@ -113,5 +135,18 @@ describe("JSX runtime", () => {
     let el = <div class="button" />;
     //@ts-expect-error yo.
     expect(el.properties.className).toEqual("button");
+  });
+
+  it("strips <!DOCTYPE> from element children", () => {
+    const root: JSXChild = { type: "root", children: [{ type: "doctype" }] };
+    expect(<>{root}</>).toEqual(root);
+    expect(<div>{root}</div>).toEqual(h("div"));
+  });
+
+  it("allows components returning primitives or arrays", () => {
+    const Id = ({ children }: { children?: JSXChildren }) => children;
+    expect(<Id />).toEqual(<></>);
+    expect(<Id>{1}</Id>).toEqual(<>{1}</>);
+    expect(<Id>s {1}</Id>).toEqual(<>s {1}</>);
   });
 });
