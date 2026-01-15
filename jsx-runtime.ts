@@ -82,9 +82,9 @@ export function Fragment(props: { children?: JSXChildren }): hast.Root {
 function read(children?: JSXChildren): hast.RootContent[] {
   switch (typeof children) {
     case "undefined":
+    case "boolean":
       return [];
     case "number":
-    case "boolean":
     case "string":
       return [{
         type: "text",

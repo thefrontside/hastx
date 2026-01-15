@@ -61,9 +61,12 @@ describe("JSX runtime", () => {
     );
   });
 
-  it("can embed boolean expressions inside", () => {
+  it("ignores boolean expressions inside", () => {
     expect(<title>{false} witness</title>).toEqual(
-      h("title", "false", " witness"),
+      h("title", " witness"),
+    );
+    expect(<title>{true} love</title>).toEqual(
+      h("title", " love"),
     );
   });
 
