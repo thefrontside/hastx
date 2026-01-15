@@ -4,7 +4,13 @@ import type * as svg from "./svg.ts";
 
 export type Element = hast.Element;
 
-export type JSXChild = string | number | boolean | undefined | JSXElement;
+export type JSXChild =
+  | string
+  | number
+  | boolean
+  | undefined
+  | null
+  | JSXElement;
 
 export type JSXChildren = JSXChild | JSXChildren[];
 
@@ -91,7 +97,9 @@ function read(children?: JSXChildren): hast.RootContent[] {
         value: String(children),
       }];
     default:
-      if (Array.isArray(children)) {
+      if (children === null) {
+        return [];
+      } else if (Array.isArray(children)) {
         return children.flatMap(read);
       } else if (children.type === "root") {
         return children.children;

@@ -5,6 +5,7 @@ export type HTMLChild =
   | number
   | boolean
   | undefined
+  | null
   | hast.Element
   | hast.Root
   | hast.Text;

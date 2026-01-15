@@ -76,6 +76,12 @@ describe("JSX runtime", () => {
     );
   });
 
+  it("ignores null", () => {
+    expect(<title>{null} hypothesis</title>).toEqual(
+      h("title", " hypothesis"),
+    );
+  });
+
   it("allows embedded exmpressions that return elements", () => {
     expect(<ul>{[1, 2, 3].map((i) => <li>{i}</li>)}</ul>).toEqual(
       h("ul", h("li", "1"), h("li", "2"), h("li", "3")),
