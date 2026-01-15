@@ -4,7 +4,7 @@ import type * as svg from "./svg.ts";
 
 export type Element = hast.Element;
 
-export type JSXChild = string | number | boolean | JSXElement;
+export type JSXChild = string | number | boolean | undefined | JSXElement;
 
 export type JSXChildren = JSXChild | JSXChildren[];
 

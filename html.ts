@@ -4,6 +4,7 @@ export type HTMLChild =
   | string
   | number
   | boolean
+  | undefined
   | hast.Element
   | hast.Root
   | hast.Text;
