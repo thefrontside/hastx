@@ -1,3 +1,8 @@
+## 0.1.2
+
+- (fix): Generate correct output for <template> tags
+  https://github.com/thefrontside/hastx/pull/13
+
 ## 0.1.1
 
 - improve compatibility with other JSX runtimes
