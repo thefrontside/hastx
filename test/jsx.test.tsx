@@ -137,10 +137,15 @@ describe("JSX runtime", () => {
     expect(el.properties.className).toEqual("button");
   });
 
+  it("supports <template>", () => {
+    expect(<template>foo</template>).toEqual(h("template", "foo"));
+  });
+
   it("strips <!DOCTYPE> from element children", () => {
     const root: JSXChild = { type: "root", children: [{ type: "doctype" }] };
     expect(<>{root}</>).toEqual(root);
     expect(<div>{root}</div>).toEqual(h("div"));
+    expect(<template>{root}</template>).toEqual(h("template", root));
   });
 
   it("allows components returning primitives or arrays", () => {
