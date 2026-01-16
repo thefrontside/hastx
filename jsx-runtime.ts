@@ -63,12 +63,25 @@ export function jsx(
     let { children, ...properties } = props as JSXElementProps;
     let className = properties.class ? { className: properties.class } : null;
 
-    return {
-      type: "element",
-      tagName,
-      properties: { ...properties, ...className },
-      children: read(children).filter((child) => child.type !== "doctype"),
-    };
+    if (tagName === "template") {
+      return {
+        type: "element",
+        tagName,
+        properties: { ...properties, ...className },
+        children: [],
+        content: {
+          type: "root",
+          children: read(children),
+        },
+      };
+    } else {
+      return {
+        type: "element",
+        tagName,
+        properties: { ...properties, ...className },
+        children: read(children).filter((child) => child.type !== "doctype"),
+      };
+    }
   } else {
     return {
       type: "root",
